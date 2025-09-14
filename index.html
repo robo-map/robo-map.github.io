@@ -29,10 +29,32 @@
   
   <title>RoboMAP - Anonymous</title>
   
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero {
+      width: 100%;
+    }
+    .publication-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+    }
+    .publication-authors, .coming-soon {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
   
 </head>
 <body>
@@ -47,13 +69,15 @@
               <div class="is-size-5 publication-authors">
                 <span class="author-block">Anonymous</span>
               </div>
+              <p class="is-size-4 mt-4 coming-soon">
+                Coming Soon
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
   </main>
-
 
 </body>
 </html>
