@@ -4,79 +4,240 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <meta name="title" content="RoboMAP - Anonymous">
-  <meta name="description" content="Project page for RoboMAP.">
-  <meta name="author" content="Anonymous">
-  <meta name="robots" content="index, follow">
+  <!-- Meta Tags -->
+  <meta name="title" content="More than A Point - Project Page">
+  <meta name="description" content="Supplementary materials for our submission.">
+  <meta name="keywords" content="robotics, machine learning, computer vision, spatial grounding, manipulation, navigation, AI, affordance heatmaps">
+  <meta name="author" content="Anonymous Authors">
   <meta name="language" content="English">
   
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
-  <meta property="og:site_name" content="RoboMAP Project">
-  <meta property="og:title" content="RoboMAP">
-  <meta property="og:description" content="Project page for RoboMAP.">
+  <meta property="og:site_name" content="Research Project">
+  <meta property="og:title" content="More than A Point - Project Page">
+  <meta property="og:description" content="Supplementary materials for our submission.">
+  <meta property="og:image" content="static/images/teaser.png">
   
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="RoboMAP">
-  <meta name="twitter:description" content="Project page for RoboMAP.">
+  <meta name="twitter:title" content="More than A Point - Project Page">
+  <meta name="twitter:description" content="Supplementary materials for our submission.">
+  <meta name="twitter:image" content="static/images/teaser.png">
 
-  <meta name="citation_title" content="RoboMAP">
-  <meta name="citation_author" content="Anonymous">
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="More than A Point: Capturing Uncertainty with Adaptive Affordance Heatmaps for Spatial Grounding in Robotic Tasks">
+  <meta name="citation_author" content="Anonymous Authors">
   
   <meta name="theme-color" content="#2563eb">
   
+  <title>More than A Point - Project Page (Anonymous for Review)</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  
+  <!-- CSS Dependencies -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <title>RoboMAP - Anonymous</title>
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Custom Styles for this template -->
   <style>
-    body, html {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+    html {
+      scroll-behavior: smooth;
     }
-    main {
-      flex: 1 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero {
-      width: 100%;
+    body {
+      font-family: 'Inter', sans-serif;
     }
     .publication-title {
-      font-family: 'Inter', sans-serif;
       font-weight: 800;
     }
-    .publication-authors, .coming-soon {
-      font-family: 'Inter', sans-serif;
+    .publication-links .link-block {
+      margin: 0 5px;
+    }
+    /* Style for disabled buttons */
+    .publication-links a:disabled, .publication-links a.is-disabled {
+        pointer-events: none;
+        opacity: 0.65;
+    }
+    .anonymity-note {
+        margin-top: 15px;
+        font-style: italic;
+        color: #7a7a7a;
+    }
+    .hero.teaser img, .framework-overview img, .result-item img {
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+    .publication-video {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .publication-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .result-item {
+      margin-bottom: 3rem;
+    }
+    .caption {
+      color: #555;
+      font-style: normal;
+      font-size: 0.9rem;
+    }
+    .section-title {
+      margin-bottom: 2rem;
     }
   </style>
-  
 </head>
 <body>
 
   <main id="main-content">
-    <section class="hero">
-      <div class="hero-body">
-        <div class="container is-max-desktop">
-          <div class="columns is-centered">
-            <div class="column has-text-centered">
-              <h1 class="title is-1 publication-title">RoboMAP</h1>
-              <div class="is-size-5 publication-authors">
-                <span class="author-block">Anonymous</span>
+  
+  <!-- Title and Authors -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-2 publication-title">More than A Point: Capturing Uncertainty with Adaptive Affordance Heatmaps for Spatial Grounding in Robotic Tasks</h1>
+            <div class="is-size-5 publication-authors mt-4">
+              <span class="author-block">Anonymous Authors</span>
+            </div>
+            <div class="column has-text-centered mt-5">
+              <div class="publication-links">
+                <!-- ANONYMIZED Buttons -->
+                <span class="link-block">
+                  <a class="button is-normal is-rounded is-dark is-disabled" title="Coming soon">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a class="button is-normal is-rounded is-dark is-disabled" title="Coming soon">
+                    <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#video" class="button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-video"></i></span><span>Demo</span>
+                  </a>
+                </span>
               </div>
-              <p class="is-size-4 mt-4 coming-soon">
-                Coming Soon
-              </p>
+              <div class="anonymity-note">
+                  <span>arXiv and Code will be made publicly available upon acceptance.</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section class="section" id="video">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <div class="publication-video">
+              <iframe src="https://www.youtube.com/embed/zfFt_MJnt4Y" frameborder="0" allow="autoplay; encrypted-media; allowfullscreen"></iframe>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Teaser Image -->
+  <section class="section teaser">
+    <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered section-title">Motivation</h2>
+        <div class="has-text-centered">
+            <img src="static/images/teaser.png" alt="Teaser Image">
+            <p class="caption">
+                For ambiguous instructions, our method generates dense heatmaps, while prior works fail with discrete points.
+            </p>
+        </div>
+    </div>
+  </section>
+
+  <!-- Framework -->
+  <section class="section framework-overview">
+    <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered section-title">Framework Overview</h2>
+        <div class="has-text-centered">
+            <img src="static/images/overall.png" alt="Framework Overview"/>
+            <p class="caption">The overall architecture of our framework.</p>
+        </div>
+    </div>
+  </section>
+  
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Many language-guided robotic systems rely on collapsing spatial reasoning into discrete points, making them brittle to perceptual noise and semantic ambiguity. To address this challenge, we propose a framework that represents spatial targets as continuous, adaptive affordance heatmaps. This dense representation captures the uncertainty in spatial grounding and provides richer information for downstream policies, thereby significantly enhancing task success and interpretability. Our method surpasses the previous state-of-the-art on a majority of grounding benchmarks with up to a 50x speed improvement, and achieves an 82% success rate in real-world manipulation. Across extensive simulated and physical experiments, it demonstrates robust performance and shows strong zero-shot generalization to navigation. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Results -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered section-title">Results</h2>
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+        
+          <div class="content has-text-justified" style="margin-bottom: 2.5rem;">
+            <p>
+              Our method demonstrates superior qualitative performance on challenging spatial grounding instructions by generating coherent heatmaps for ambiguous regions, unlike baseline methods. It also shows strong zero-shot generalization capabilities across diverse environments (simulation, real-world), robotic platforms (industrial arms, humanoids), and even extends to navigation tasks in unseen settings. Quantitatively, our model achieves state-of-the-art performance on a majority of standard benchmarks while achieving a substantial increase in inference speed.
+            </p>
+          </div>
+          <div class="has-text-centered result-item">
+            <img src="static/images/benchmark.png" alt="Benchmark Performance"/>
+          </div>
+
+          <div class="has-text-centered result-item">
+            <img src="static/images/inference_efficiency.png" alt="Inference Efficiency"/>
+          </div>
+          <div class="has-text-centered result-item">
+            <img src="static/images/qualitative_vis_v0.png" alt="Qualitative Visualization"/>
+          </div>
+
+          <div class="has-text-centered result-item">
+            <img src="static/images/realworld-2.png" alt="Real-world Robot Experiments"/>
+          </div>
+
+
+
+          
+          <div class="has-text-centered result-item">
+            <img src="static/images/nav_visuals.png" alt="Zero-shot Navigation Tasks"/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
   </main>
 
 </body>
