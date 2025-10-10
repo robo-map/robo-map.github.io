@@ -4,27 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <!-- Meta Tags -->
   <meta name="title" content="More than A Point - Project Page">
   <meta name="description" content="Supplementary materials for our submission.">
   <meta name="keywords" content="robotics, machine learning, computer vision, spatial grounding, manipulation, navigation, AI, affordance heatmaps">
   <meta name="author" content="Anonymous Authors">
   <meta name="language" content="English">
   
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Research Project">
   <meta property="og:title" content="More than A Point - Project Page">
   <meta property="og:description" content="Supplementary materials for our submission.">
   <meta property="og:image" content="static/images/teaser.png">
   
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="More than A Point - Project Page">
   <meta name="twitter:description" content="Supplementary materials for our submission.">
   <meta name="twitter:image" content="static/images/teaser.png">
 
-  <!-- Academic/Research Specific -->
   <meta name="citation_title" content="More than A Point: Capturing Uncertainty with Adaptive Affordance Heatmaps for Spatial Grounding in Robotic Tasks">
   <meta name="citation_author" content="Anonymous Authors">
   
@@ -32,20 +28,16 @@
   
   <title>More than A Point - Project Page (Anonymous for Review)</title>
   
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   
-  <!-- CSS Dependencies -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Custom Styles for this template -->
   <style>
     html {
       scroll-behavior: smooth;
@@ -69,7 +61,7 @@
         font-style: italic;
         color: #7a7a7a;
     }
-    .hero.teaser img, .framework-overview img, .result-item img {
+    .hero.teaser img, .framework-overview img, .result-item img, .gif-item img {
       border-radius: 8px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       margin-bottom: 1rem;
@@ -89,7 +81,7 @@
       width: 100%;
       height: 100%;
     }
-    .result-item {
+    .result-item, .gif-item {
       margin-bottom: 3rem;
     }
     .caption {
@@ -106,7 +98,6 @@
 
   <main id="main-content">
   
-  <!-- Title and Authors -->
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
@@ -118,7 +109,6 @@
             </div>
             <div class="column has-text-centered mt-5">
               <div class="publication-links">
-                <!-- ANONYMIZED Buttons -->
                 <span class="link-block">
                   <a class="button is-normal is-rounded is-dark is-disabled" title="Coming soon">
                     <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
@@ -145,7 +135,6 @@
     </div>
   </section>
 
-  <!-- Video -->
   <section class="section" id="video">
     <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
@@ -158,7 +147,6 @@
     </div>
   </section>
 
-  <!-- Teaser Image -->
   <section class="section teaser">
     <div class="container is-max-desktop">
         <h2 class="title is-3 has-text-centered section-title">Motivation</h2>
@@ -171,7 +159,6 @@
     </div>
   </section>
 
-  <!-- Framework -->
   <section class="section framework-overview">
     <div class="container is-max-desktop">
         <h2 class="title is-3 has-text-centered section-title">Framework Overview</h2>
@@ -182,7 +169,6 @@
     </div>
   </section>
   
-  <!-- Abstract -->
   <section class="section hero is-light">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
@@ -199,47 +185,133 @@
   </section>
 
 
-  <!-- Results -->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered section-title">Results</h2>
-      <div class="columns is-centered">
-        <div class="column is-four-fifths">
-        
-          <div class="content has-text-justified" style="margin-bottom: 2.5rem;">
-            <p>
-              Our method demonstrates superior qualitative performance on challenging spatial grounding instructions by generating coherent heatmaps for ambiguous regions, unlike baseline methods. It also shows strong zero-shot generalization capabilities across diverse environments (simulation, real-world), robotic platforms (industrial arms, humanoids), and even extends to navigation tasks in unseen settings. Quantitatively, our model achieves state-of-the-art performance on a majority of standard benchmarks while achieving a substantial increase in inference speed.
-            </p>
-          </div>
-          <div class="has-text-centered result-item">
-            <img src="static/images/benchmark.png" alt="Benchmark Performance"/>
-          </div>
-          <div class="has-text-centered result-item">
-            <img src="static/images/simplerenv.png" alt="simplerenv"/>
-          </div>
-          <div class="has-text-centered result-item">
-            <img src="static/images/realworld.png" alt="real-world"/>
-          </div>
-          <div class="has-text-centered result-item">
-            <img src="static/images/inference_efficiency.png" alt="Inference Efficiency"/>
-          </div>
-
-          <div class="has-text-centered result-item">
-            <img src="static/images/qualitative_vis_v0.png" alt="Qualitative Visualization"/>
-          </div>
-
-          <div class="has-text-centered result-item">
-            <img src="static/images/realworld-2.png" alt="Real-world Robot Experiments"/>
-          </div>
-
-
-
-          
-          <div class="has-text-centered result-item">
-            <img src="static/images/nav_visuals.png" alt="Zero-shot Navigation Tasks"/>
-          </div>
-
+ 
+<!-- Results -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered section-title">Results and Analysis</h2>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+      
+        <div class="content has-text-justified" style="margin-bottom: 2.5rem;">
+          <p>
+            Our method demonstrates superior qualitative performance on challenging spatial grounding instructions by generating coherent heatmaps for ambiguous regions. It also shows strong zero-shot generalization capabilities across diverse environments, robotic platforms, and even extends to navigation tasks in unseen settings. Quantitatively, our model achieves state-of-the-art performance on a majority of standard benchmarks while achieving a substantial increase in inference speed.
+          </p>
         </div>
+        <div class="has-text-centered result-item">
+          <h3 class="title is-4">Benchmark Performance</h3>
+          <img src="static/images/benchmark.png" alt="Benchmark Performance" class="content-image"/>
+        </div>
+        <div class="has-text-centered result-item">
+          <h3 class="title is-4">Simulation Environment</h3>
+          <img src="static/images/simplerenv.png" alt="simplerenv" class="content-image"/>
+        </div>
+        <div class="has-text-centered result-item">
+          <h3 class="title is-4">Real-World Generalization</h3>
+          <img src="static/images/realworld.png" alt="real-world" class="content-image"/>
+        </div>
+         <!-- <div class="has-text-centered result-item">
+          <h3 class="title is-4">Real-World Robot Experiments</h3>
+          <img src="static/images/realworld-2.png" alt="Real-world Robot Experiments" class="content-image"/>
+        </div> -->
+        <div class="has-text-centered result-item">
+          <h3 class="title is-4">Inference Efficiency</h3>
+          <img src="static/images/inference_efficiency.png" alt="Inference Efficiency" class="content-image"/>
+        </div>
+        <div class="has-text-centered result-item">
+          <h3 class="title is-4">Qualitative Visualization</h3>
+          <img src="static/images/qualitative_vis_v0.png" alt="Qualitative Visualization" class="content-image"/>
+        </div>
+        <div class="has-text-centered result-item">
+          <h3 class="title is-4">Zero-Shot Navigation</h3>
+          <img src="static/images/nav_visuals.jpg" alt="Zero-shot Navigation Tasks" class="content-image"/>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Real-World Execution Section -->
+  <section class="section is-white">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered section-title">Real-World Execution</h2>
+      <div class="columns is-centered is-multiline">
+        
+        <div class="column is-one-third gif-item-container">
+            <div class="gif-card">
+              <img src="static/gif/right banana to right plate.gif" alt="Place the right banana onto the right plate">
+              <p class="caption">Place the right banana onto the right plate.</p>
+            </div>
+        </div>
+        <div class="column is-one-third gif-item-container">
+            <div class="gif-card">
+              <img src="static/gif/bitter gourd to left plate.gif" alt="Put the bitter gourd on the left plate">
+              <p class="caption">Put the bitter gourd on the left plate.</p>
+            </div>
+        </div>
+        <div class="column is-one-third gif-item-container">
+            <div class="gif-card">
+              <img src="static/gif/bottle to dustpan.gif" alt="Move the bottle into the dustpan">
+              <p class="caption">Move the bottle into the dustpan.</p>
+            </div>
+        </div>
+        <div class="column is-one-third gif-item-container">
+            <div class="gif-card">
+              <img src="static/gif/corn to bottom basket.gif" alt="Put the corn into the bottom basket">
+              <p class="caption">Put the corn into the bottom basket.</p>
+            </div>
+        </div>
+        <div class="column is-one-third gif-item-container">
+            <div class="gif-card">
+              <img src="static/gif/corn to upper basket.gif" alt="Place the corn in the upper basket">
+              <p class="caption">Place the corn in the upper basket.</p>
+            </div>
+        </div>
+        <div class="column is-one-third gif-item-container">
+            <div class="gif-card">
+              <img src="static/gif/fish to borad.gif" alt="Transfer the fish to the board">
+              <p class="caption">Move the fish to the board.</p>
+            </div>
+        </div>
+        <div class="column is-one-third gif-item-container">
+            <div class="gif-card">
+              <img src="static/gif/knife beside plate.gif" alt="Lay the knife beside the plate">
+              <p class="caption">Lay the knife beside the plate.</p>
+            </div>
+        </div>
+        <div class="column is-one-third gif-item-container">
+            <div class="gif-card">
+              <img src="static/gif/pepper to bottom basket.gif" alt="Put the pepper in the bottom basket">
+              <p class="caption">Put the pepper in the bottom basket.</p>
+            </div>
+        </div>
+        <div class="column is-one-third gif-item-container">
+            <div class="gif-card">
+              <img src="static/gif/pepper to left plate.gif" alt="Move the pepper onto the left plate">
+              <p class="caption">Move the pepper onto the left plate.</p>
+            </div>
+        </div>
+        <div class="column is-one-third gif-item-container">
+            <div class="gif-card">
+              <img src="static/gif/spoon to left of plate.gif" alt="Place the spoon to the left of the plate">
+              <p class="caption">Place the spoon to the left of the plate.</p>
+            </div>
+        </div>
+        <div class="column is-one-third gif-item-container">
+            <div class="gif-card">
+              <img src="static/gif/spoon to near plate.gif" alt="Put the spoon down near the plate">
+              <p class="caption">Put the spoon down near the plate.</p>
+            </div>
+        </div>
+        <div class="column is-one-third gif-item-container">
+            <div class="gif-card">
+              <img src="static/gif/trask to dustpan.gif" alt="Transfer the trash into the dustpan">
+              <p class="caption">Move the trash into the dustpan.</p>
+            </div>
+        </div>
+
       </div>
     </div>
   </section>
