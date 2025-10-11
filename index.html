@@ -187,6 +187,40 @@
 
  
 <!-- Results -->
+<style>
+  /* 滚动容器的样式 */
+  .horizontal-scroll-container {
+    display: flex; /* 使用 Flexbox 布局 */
+    overflow-x: auto; /* 当内容超出时显示水平滚动条 */
+    scroll-snap-type: x mandatory; /* 开启滚动吸附效果 */
+    -webkit-overflow-scrolling: touch; /* 在移动设备上实现平滑滚动 */
+    padding-bottom: 1rem; /* 为滚动条留出空间 */
+    margin-bottom: 2.5rem; /* 保持与下方元素的间距 */
+  }
+
+  /* 滚动项的样式 */
+  .scroll-item {
+    flex: 0 0 95%; /* 每个项目占据容器宽度的95%，不收缩不拉伸 */
+    scroll-snap-align: center; /* 将项目吸附到容器中心 */
+    margin-right: 1rem; /* 项目之间的右边距 */
+  }
+
+  /* 最后一个项目不需要右边距 */
+  .scroll-item:last-child {
+    margin-right: 0;
+  }
+
+  /* 自定义滚动条样式 (适用于 Webkit 内核浏览器, 如 Chrome, Safari) */
+  .horizontal-scroll-container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .horizontal-scroll-container::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    border-radius: 4px;
+  }
+</style>
+
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered section-title">Results and Analysis</h2>
@@ -198,22 +232,21 @@
             Our method demonstrates superior qualitative performance on challenging spatial grounding instructions by generating coherent heatmaps for ambiguous regions. It also shows strong zero-shot generalization capabilities across diverse environments, robotic platforms, and even extends to navigation tasks in unseen settings. Quantitatively, our model achieves state-of-the-art performance on a majority of standard benchmarks while achieving a substantial increase in inference speed.
           </p>
         </div>
-        <div class="has-text-centered result-item">
-          <h3 class="title is-4">Benchmark Performance</h3>
-          <img src="static/images/benchmark.png" alt="Benchmark Performance" class="content-image"/>
+
+        <div class="horizontal-scroll-container">
+          <div class="has-text-centered result-item scroll-item">
+            <h3 class="title is-4">Benchmark Performance</h3>
+            <img src="static/images/benchmark.png" alt="Benchmark Performance" class="content-image"/>
+          </div>
+          <div class="has-text-centered result-item scroll-item">
+            <h3 class="title is-4">Simulation Environment</h3>
+            <img src="static/images/simplerenv.png" alt="simplerenv" class="content-image"/>
+          </div>
+          <div class="has-text-centered result-item scroll-item">
+            <h3 class="title is-4">Real-World Generalization</h3>
+            <img src="static/images/realworld.png" alt="real-world" class="content-image"/>
+          </div>
         </div>
-        <div class="has-text-centered result-item">
-          <h3 class="title is-4">Simulation Environment</h3>
-          <img src="static/images/simplerenv.png" alt="simplerenv" class="content-image"/>
-        </div>
-        <div class="has-text-centered result-item">
-          <h3 class="title is-4">Real-World Generalization</h3>
-          <img src="static/images/realworld.png" alt="real-world" class="content-image"/>
-        </div>
-         <!-- <div class="has-text-centered result-item">
-          <h3 class="title is-4">Real-World Robot Experiments</h3>
-          <img src="static/images/realworld-2.png" alt="Real-world Robot Experiments" class="content-image"/>
-        </div> -->
         <div class="has-text-centered result-item">
           <h3 class="title is-4">Inference Efficiency</h3>
           <img src="static/images/inference_efficiency.png" alt="Inference Efficiency" class="content-image"/>
