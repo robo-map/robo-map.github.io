@@ -188,36 +188,78 @@
  
 <!-- Results -->
 <style>
-  /* 滚动容器的样式 */
+  /* 滚动容器的父级，用于定位箭头 */
+  .scroll-wrapper {
+    position: relative;
+    margin-bottom: 2.5rem; /* 保持与下方元素的间距 */
+  }
+
+  /* 水平滚动容器的样式 */
   .horizontal-scroll-container {
-    display: flex; /* 使用 Flexbox 布局 */
-    overflow-x: auto; /* 当内容超出时显示水平滚动条 */
-    scroll-snap-type: x mandatory; /* 开启滚动吸附效果 */
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch; /* 在移动设备上实现平滑滚动 */
     padding-bottom: 1rem; /* 为滚动条留出空间 */
-    margin-bottom: 2.5rem; /* 保持与下方元素的间距 */
+    /* 隐藏默认滚动条 */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+  }
+  /* 隐藏默认滚动条 (Chrome, Safari, Opera) */
+  .horizontal-scroll-container::-webkit-scrollbar {
+    display: none;
   }
 
   /* 滚动项的样式 */
   .scroll-item {
     flex: 0 0 95%; /* 每个项目占据容器宽度的95%，不收缩不拉伸 */
     scroll-snap-align: center; /* 将项目吸附到容器中心 */
-    margin-right: 1rem; /* 项目之间的右边距 */
+    margin-right: 1rem;
+    box-sizing: border-box; /* 确保 padding 和 border 不会增加宽度 */
   }
 
-  /* 最后一个项目不需要右边距 */
   .scroll-item:last-child {
     margin-right: 0;
   }
-
-  /* 自定义滚动条样式 (适用于 Webkit 内核浏览器, 如 Chrome, Safari) */
-  .horizontal-scroll-container::-webkit-scrollbar {
-    height: 8px;
+  
+  /* 导航箭头的通用样式 */
+  .scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #dbdbdb;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    color: #363636;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none; /* 禁止用户选中箭头文字 */
+    transition: opacity 0.3s, background-color 0.3s;
+  }
+  .scroll-arrow:hover {
+    background-color: rgba(245, 245, 245, 1);
   }
 
-  .horizontal-scroll-container::-webkit-scrollbar-thumb {
-    background-color: #cccccc;
-    border-radius: 4px;
+  /* 箭头被禁用时的样式 */
+  .scroll-arrow.is-hidden {
+    opacity: 0;
+    pointer-events: none; /* 隐藏时不可点击 */
+  }
+
+  /* 左箭头定位 */
+  .scroll-arrow.left {
+    left: -20px;
+  }
+
+  /* 右箭头定位 */
+  .scroll-arrow.right {
+    right: -20px;
   }
 </style>
 
@@ -233,21 +275,26 @@
           </p>
         </div>
 
-        <div class="horizontal-scroll-container">
-          <div class="has-text-centered result-item scroll-item">
-            <h3 class="title is-4">Benchmark Performance</h3>
-            <img src="static/images/benchmark.png" alt="Benchmark Performance" class="content-image"/>
+        <div class="scroll-wrapper">
+          <div id="image-scroller" class="horizontal-scroll-container">
+            <div class="has-text-centered result-item scroll-item">
+              <h3 class="title is-4">Benchmark Performance</h3>
+              <img src="static/images/benchmark.png" alt="Benchmark Performance" class="content-image"/>
+            </div>
+            <div class="has-text-centered result-item scroll-item">
+              <h3 class="title is-4">Simulation Environment</h3>
+              <img src="static/images/simplerenv.png" alt="simplerenv" class="content-image"/>
+            </div>
+            <div class="has-text-centered result-item scroll-item">
+              <h3 class="title is-4">Real-World Generalization</h3>
+              <img src="static/images/realworld.png" alt="real-world" class="content-image"/>
+            </div>
           </div>
-          <div class="has-text-centered result-item scroll-item">
-            <h3 class="title is-4">Simulation Environment</h3>
-            <img src="static/images/simplerenv.png" alt="simplerenv" class="content-image"/>
-          </div>
-          <div class="has-text-centered result-item scroll-item">
-            <h3 class="title is-4">Real-World Generalization</h3>
-            <img src="static/images/realworld.png" alt="real-world" class="content-image"/>
-          </div>
+          <div id="scroll-left-button" class="scroll-arrow left is-hidden">‹</div>
+          <div id="scroll-right-button" class="scroll-arrow right">›</div>
         </div>
-        <div class="has-text-centered result-item">
+        
+         <div class="has-text-centered result-item">
           <h3 class="title is-4">Inference Efficiency</h3>
           <img src="static/images/inference_efficiency.png" alt="Inference Efficiency" class="content-image"/>
         </div>
@@ -265,6 +312,58 @@
   </div>
 </section>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const scroller = document.getElementById('image-scroller');
+    const leftButton = document.getElementById('scroll-left-button');
+    const rightButton = document.getElementById('scroll-right-button');
+
+    if (scroller && leftButton && rightButton) {
+      // 函数：根据滚动位置更新箭头可见性
+      const updateArrowVisibility = () => {
+        // 检查是否可以向左滚动
+        if (scroller.scrollLeft > 0) {
+          leftButton.classList.remove('is-hidden');
+        } else {
+          leftButton.classList.add('is-hidden');
+        }
+
+        // 检查是否可以向右滚动
+        // scrollWidth 是元素内容的总宽度
+        // clientWidth 是元素的可见宽度
+        // scrollLeft 是已滚动的距离
+        const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+        if (scroller.scrollLeft < maxScrollLeft - 1) { // -1 像素容差
+          rightButton.classList.remove('is-hidden');
+        } else {
+          rightButton.classList.add('is-hidden');
+        }
+      };
+
+      // 右箭头点击事件
+      rightButton.addEventListener('click', () => {
+        // 计算每次滚动的距离（一个项目的宽度）
+        const scrollAmount = scroller.querySelector('.scroll-item').offsetWidth;
+        scroller.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+
+      // 左箭头点击事件
+      leftButton.addEventListener('click', () => {
+        const scrollAmount = scroller.querySelector('.scroll-item').offsetWidth;
+        scroller.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+
+      // 监听滚动事件，实时更新箭头状态
+      scroller.addEventListener('scroll', updateArrowVisibility);
+
+      // 初始加载时检查一次
+      updateArrowVisibility();
+      
+      // 当窗口大小变化时，重新检查箭头状态
+      window.addEventListener('resize', updateArrowVisibility);
+    }
+  });
+</script>
 
 <!-- Real-World Execution Section -->
   <section class="section is-white">
