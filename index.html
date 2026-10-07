@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <meta name="title" content="More than a Point: Adaptive Affordance Heatmaps as VLM Grounding Interfaces for Robotics">
-  <meta name="description" content="Supplementary materials for our submission.">
+  <meta name="description" content="RoboMAP uses adaptive affordance heatmaps as a language-conditioned spatial interface for VLM-based robotic grounding, achieving the best reported accuracy on three of four benchmarks, a 0.04 s grounding-stage forward pass, 60.5% average SimplerEnv success, and 82% success across 50 real-world trials.">
   <meta name="keywords" content="robotics, machine learning, computer vision, spatial grounding, manipulation, navigation, AI, affordance heatmaps">
   <meta name="author" content="Xinyu Shao, TANG YANZHE, Pengwei Xie, Long ZENG, Xiu Li">
   <meta name="language" content="English">
@@ -27,6 +27,8 @@
   <meta name="citation_author" content="Pengwei Xie">
   <meta name="citation_author" content="Long ZENG">
   <meta name="citation_author" content="Xiu Li">
+  <meta name="citation_conference_title" content="Conference on Robot Learning (CoRL)">
+  <meta name="citation_publication_date" content="2026">
   
   <meta name="theme-color" content="#2563eb">
   
@@ -109,6 +111,23 @@
       color: #555;
       font-style: normal;
       font-size: 0.9rem;
+    }
+    .result-note {
+      color: #555;
+      font-size: 0.95rem;
+      margin-top: -1.5rem;
+      margin-bottom: 2rem;
+    }
+    .bibtex-box {
+      background: #f5f5f5;
+      border: 1px solid #dbdbdb;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      overflow-x: auto;
+      padding: 1rem;
+      text-align: left;
+      white-space: pre;
     }
     .section-title {
       margin-bottom: 2rem;
@@ -195,7 +214,7 @@
         <div class="has-text-centered">
             <img src="static/images/teaser-2.jpg" alt="Teaser Image">
             <p class="caption">
-                For ambiguous instructions, our method generates dense heatmaps, while prior works fail with discrete points.
+                Sparse vs. dense grounding. RoboMAP uses adaptive heatmaps to represent region support and multiple feasible candidates.
             </p>
         </div>
     </div>
@@ -206,7 +225,9 @@
         <h2 class="title is-3 has-text-centered section-title">Framework Overview</h2>
         <div class="has-text-centered">
             <img src="static/images/overall.jpg" alt="Framework Overview"/>
-            <p class="caption">The overall architecture of our framework.</p>
+            <p class="caption">
+                RoboMAP overview: heterogeneous supervision is synthesized into heatmap targets, and the Adaptive Heatmap Decoder produces a dense spatial interface for downstream robotic modules.
+            </p>
         </div>
     </div>
   </section>
@@ -218,7 +239,7 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Many language-guided robotic systems rely on collapsing spatial reasoning into discrete points, making them brittle to perceptual noise and semantic ambiguity. To address this challenge, we propose a framework that represents spatial targets as continuous, adaptive affordance heatmaps. This dense representation captures the uncertainty in spatial grounding and provides richer information for downstream policies, thereby significantly enhancing task success and interpretability. Our method surpasses the previous state-of-the-art on a majority of grounding benchmarks with up to a 50x speed improvement, and achieves an 82% success rate in real-world manipulation. Across extensive simulated and physical experiments, it demonstrates robust performance and shows strong zero-shot generalization to navigation. 
+              Hierarchical VLM-based robotic systems often use sparse points or bounding boxes as intermediate spatial representations, which are inadequate for region-level grounding. This is particularly evident in instructions such as “place near the bowl,” which specify a feasible region rather than a single target point. We present RoboMAP, a VLM-based robotic grounding framework that uses adaptive affordance heatmaps as a language-conditioned intermediate interface between spatial reasoning and downstream modules. RoboMAP predicts dense score maps for continuous and object-free target regions, exposing feasible spatial support that downstream segmentation, grasping, and control modules can use beyond sparse prompts alone. To enable scalable training without manual dense labels, RoboMAP synthesizes heatmap supervision from heterogeneous annotations, including points, boxes, and robot trajectory data. Across four spatial grounding benchmarks evaluated with standard point-extraction metrics, RoboMAP obtains the best reported accuracy on three benchmarks while maintaining a 0.04 s grounding-stage forward pass. In 50 real-world dual-arm manipulation trials spanning five tabletop task types, it achieves an 82% success rate using heatmap-guided segmentation and grasp proposal. We further provide qualitative cross-embodiment demonstrations across manipulation and navigation scenarios.
             </p>
           </div>
         </div>
@@ -313,40 +334,41 @@
       
         <div class="content has-text-justified" style="margin-bottom: 2.5rem;">
           <p>
-            Our method demonstrates superior qualitative performance on challenging spatial grounding instructions by generating coherent heatmaps for ambiguous regions. It also shows strong zero-shot generalization capabilities across diverse environments, robotic platforms, and even extends to navigation tasks in unseen settings. Quantitatively, our model achieves state-of-the-art performance on a majority of standard benchmarks while achieving a substantial increase in inference speed.
+            RoboMAP generates coherent heatmaps for ambiguous and object-free spatial instructions, preserving feasible regions before downstream modules extract points, masks, or grasps. It achieves the best reported accuracy on three of four spatial grounding benchmarks and a 0.04 s grounding-stage forward pass; downstream perception and execution are excluded from this timing. In zero-shot SimplerEnv evaluation, RoboMAP reaches a 60.5% average success rate. In 50 real-world dual-arm manipulation trials across five tabletop task types, it achieves 41/50 successes (82%), compared with 78% without SAM and 66% for Embodied-R1 with SAM. The qualitative figures below show cross-embodiment manipulation and navigation demonstrations.
           </p>
         </div>
 
         <div class="scroll-wrapper">
           <div id="image-scroller" class="horizontal-scroll-container">
             <div class="has-text-centered result-item scroll-item">
-              <h3 class="title is-4">Benchmark Performance</h3>
-              <img src="static/images/benchmark.png" alt="Benchmark Performance" class="content-image"/>
+              <h3 class="title is-4">Spatial Grounding Results</h3>
+              <img src="static/images/table1_grounding.png" alt="Camera-ready Table 1: spatial grounding results" class="content-image"/>
+              <p class="caption">Camera-ready Table 1. Accuracy is computed from point predictions; grounding time measures only the VLM module.</p>
             </div>
             <div class="has-text-centered result-item scroll-item">
-              <h3 class="title is-4">Simulation Environment</h3>
-              <img src="static/images/simplerenv.png" alt="simplerenv" class="content-image"/>
+              <h3 class="title is-4">SimplerEnv Evaluation</h3>
+              <img src="static/images/table5_simplerenv.png" alt="Camera-ready Table 5: SimplerEnv evaluation" class="content-image"/>
+              <p class="caption">Camera-ready Table 5. RoboMAP achieves a 60.5% average success rate across four zero-shot SimplerEnv tasks.</p>
             </div>
             <div class="has-text-centered result-item scroll-item">
-              <h3 class="title is-4">Real-World Generalization</h3>
-              <img src="static/images/realworld.png" alt="real-world" class="content-image"/>
+              <h3 class="title is-4">Real-World Manipulation</h3>
+              <img src="static/images/table6_realworld.png" alt="Camera-ready Table 6: real-world manipulation" class="content-image"/>
+              <p class="caption">Camera-ready Table 6. RoboMAP achieves 41/50 successes (82%) across five relational tabletop tasks.</p>
             </div>
           </div>
           <div id="scroll-left-button" class="scroll-arrow left is-hidden">‹</div>
           <div id="scroll-right-button" class="scroll-arrow right">›</div>
         </div>
         
-         <div class="has-text-centered result-item">
-          <h3 class="title is-4">Inference Efficiency</h3>
-          <img src="static/images/inference_efficiency.png" alt="Inference Efficiency" class="content-image"/>
+        <div class="has-text-centered result-item">
+          <h3 class="title is-4">Qualitative Grounding</h3>
+          <img src="static/images/figure4_qualitative.png" alt="Camera-ready Figure 4: qualitative grounding comparison" class="content-image"/>
+          <p class="caption">Camera-ready Figure 4. RoboMAP produces coherent heatmaps that preserve feasible regions and task-specific spatial extents.</p>
         </div>
         <div class="has-text-centered result-item">
-          <h3 class="title is-4">Qualitative Visualization</h3>
-          <img src="static/images/qualitative_vis_v1.png" alt="Qualitative Visualization" class="content-image"/>
-        </div>
-        <div class="has-text-centered result-item">
-          <h3 class="title is-4">Zero-Shot Navigation</h3>
-          <img src="static/images/nav_visuals.jpg" alt="Zero-shot Navigation Tasks" class="content-image"/>
+          <h3 class="title is-4">Cross-Embodiment Demonstrations</h3>
+          <img src="static/images/figure5_cross_embodiment.png" alt="Camera-ready Figure 5: cross-embodiment manipulation and navigation demonstrations" class="content-image"/>
+          <p class="caption">Camera-ready Figure 5. Qualitative zero-shot manipulation and navigation examples across multiple embodiments and environments.</p>
         </div>
 
       </div>
@@ -411,6 +433,7 @@
   <section class="section is-white">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered section-title">Real-World Execution</h2>
+      <p class="has-text-centered result-note">The GIFs below are qualitative demonstrations and are separate from the 50-trial quantitative real-world evaluation reported above.</p>
       <div class="columns is-centered is-multiline">
         
         <div class="column is-one-third gif-item-container">
@@ -487,6 +510,21 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="bibtex">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered section-title">BibTeX</h2>
+      <p class="has-text-centered mb-4">The citation below is provided for readers who want to cite this work.</p>
+      <pre class="bibtex-box"><code>@inproceedings{shao2026robomap,
+  title = {More than a Point: Adaptive Affordance Heatmaps as VLM Grounding Interfaces for Robotics},
+  author = {Shao, Xinyu and Tang, Yanzhe and Xie, Pengwei and Zeng, Long and Li, Xiu},
+  booktitle = {Conference on Robot Learning (CoRL)},
+  year = {2026},
+  note = {Poster},
+  url = {https://arxiv.org/abs/2510.10912}
+}</code></pre>
     </div>
   </section>
 
